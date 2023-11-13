@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+
+</head>
+<body>
+    <h1>Rana</h1>
+  <div class="container">
+    <div class="calculator">
+      <input type="text" placeholder="0" id="output-display">
+      <button onclick="clear()">Cl</button>
+      <button onclick="del('0')">Del</button>
+      <button onclick="display('%')">%</button>
+      <button onclick="display('/')">/</button>
+      <button onclick="display('7')">7</button>
+      <button onclick="display('8')">8</button>
+      <button onclick="display('9')">9</button>
+      <button onclick="display('*')">*</button>
+      <button onclick="display('4')">4</button>
+      <button onclick="display('5')">5</button>
+      <button onclick="display('6')">6</button>
+      <button onclick="display('-')">-</button>
+      <button onclick="display('1')">1</button>
+      <button onclick="display('2')">2</button>
+      <button onclick="display('3')">3</button>
+      <button onclick="display('+')">+</button>
+      <button onclick="display('.')">.</button>
+      <button onclick="display('0')">0</button>
+      <button onclick="calculate('=')" class="equal">=</button>
+    </div>
+  </div>
+
+  <style>
+    *{
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #eff0f4;
+}
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 247, 247);
+}
+.calculator{
+  padding: 40px 100px;
+  background-color: transparent;
+  filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.05));
+  box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.05),
+              15px 25px 10px rgba(0, 0, 0, 0.05),
+              5px 20px 20px rgba(0, 0, 0, 0.05); 
+  border-radius: 40px;
+  display: grid;
+  grid-template-columns: repeat(4,68px);
+  grid-column-gap: 12px;
+  transition: all 0.7s;
+}
+.calculator:hover {
+  border-radius: 50%;
+  background: rgb(237, 253, 251);
+}
+input {
+  grid-column: span 4;
+  height: 90px;
+  width: 290px;
+  border: none;
+  background: transparent;
+  box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.05),
+              15px 25px 10px rgba(0, 0, 0, 0.05),
+              5px 20px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+  margin: 5px auto;
+  color: rgba(70, 70, 70,);
+  font-size: 2.2rem;
+  padding: 12px;
+  text-align: end;
+}
+button {
+  transform: translateX(-7px);
+  height: 63px;
+  width: 63px;
+  box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.05),
+              15px 25px 10px rgba(0, 0, 0, 0.05),
+              5px 20px 20px rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 55% 45% 32% 68% / 28% 46% 54% 72%;
+  font-size: 1.4rem;
+  margin: 8px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background-color: #eff0ef;
+}
+button:hover {
+  border-radius: 40%;
+  background-color: rgb(157, 255, 240);
+}
+.equal {
+  font-size: 2rem;
+  width: 140px;
+  border-radius: 55% 45% 32% 68% / 28% 46% 54% 72%;
+  background-color: #eff0f4;
+  box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.05),
+              15px 25px 10px rgba(0, 0, 0, 0.05),
+              5px 20px 20px rgba(0, 0, 0, 0.07);
+}
+.equal:hover {
+  background-color: #84e9a2;
+  width: 140px;
+}
+  </style>
+
+  <script>
+    outputdisplay = document.getElementById('output-display');
+function display(num){
+  outputdisplay.value += num;
+}
+
+function calculate(){
+  try {
+    outputdisplay.value = eval(outputdisplay.value);
+  } catch (error) {
+    alert("invalid value")
+  }
+}
+function del(){
+  outputdisplay.value = outputdisplay.value.slice(0,-2);
+}
+  </script>
+</body>
+</html>
